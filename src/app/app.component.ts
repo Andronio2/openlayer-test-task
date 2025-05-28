@@ -1,6 +1,6 @@
 import { ChangeDetectorRef, Component } from '@angular/core';
 import { AngularOpenlayersModule } from 'ng-openlayers';
-import { LayoutComponent } from "./pages/layout/layout.component";
+import { LayoutComponent } from './pages/layout/layout.component';
 
 @Component({
   selector: 'app-root',
@@ -8,5 +8,4 @@ import { LayoutComponent } from "./pages/layout/layout.component";
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
-export class AppComponent {
-}
+export class AppComponent {}

@@ -1,18 +1,44 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
-import { AngularOpenlayersModule } from 'ng-openlayers';
-import { MapBrowserEvent } from 'ol';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { AngularOpenlayersModule, SourceVectorComponent } from 'ng-openlayers';
+import { Feature, MapBrowserEvent } from 'ol';
 import { Vector } from 'ol/layer';
 import { Style } from 'ol/style';
+import { Observable } from 'rxjs';
+import { Message } from '../../models/message';
+import { AppService } from '../../services/app.service';
+import { Geometry } from 'ol/geom';
 
 @Component({
   selector: 'app-map',
   templateUrl: './map.component.html',
-  // styles: [':host{display:contents}'], // Makes component host as if it was not there, can offer less css headaches. Use @HostBinding class approach for easier overrides.
-  // host: { class: 'contents' },
   imports: [CommonModule, AngularOpenlayersModule],
 })
-export class MapComponent {
+export class MapComponent implements OnInit, AfterViewInit {
+  @ViewChild('layer', { static: true }) layer?: SourceVectorComponent;
+
+  messages$: Observable<Message>;
+  featureList!: Feature<Geometry>[];
+
+  constructor(private appService: AppService) {
+    this.messages$ = this.appService.messages$;
+  }
+
+  ngOnInit(): void {
+    this.messages$.subscribe(this.showFeatures);
+    console.log('layer', this.layer);
+  }
+
+  ngAfterViewInit(): void {
+    this.featureList = this.layer?.instance.getFeatures() || [];
+  }
+
+  private showFeatures(msg: Message) {
+    // const
+    // msg.employee.forEach((e) => {
+    // })
+  }
+
   onMapClick(event: MapBrowserEvent<MouseEvent>) {
     console.log('event', event);
     const f = event.map.forEachFeatureAtPixel(event.pixel, (f) => f);
