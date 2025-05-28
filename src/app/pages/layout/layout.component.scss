@@ -1,0 +1,22 @@
+:host {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+}
+
+app-sidebar {
+  flex: 0 0 40px;
+  height: 100%;
+}
+
+app-map {
+  flex: 1 1 auto;
+  height: 100%;
+}
+
+app-tools {
+  position: absolute;
+  right: 0;
+  top: 0;
+}

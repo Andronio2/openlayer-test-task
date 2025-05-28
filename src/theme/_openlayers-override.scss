@@ -1,0 +1,15 @@
+.ol-zoom.ol-unselectable.ol-control {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  bottom: 50px;
+  top: auto;
+  right: 10px;
+  left: auto;
+  background-color: transparent;
+
+  .ol-zoom-in,
+  .ol-zoom-out {
+    border-radius: 50%;
+  }
+}

@@ -1,0 +1,43 @@
+<div style="height: 100%">
+  <aol-map (olClick)="onMapClick($event)">
+    <aol-view [zoom]="12">
+      <aol-coordinate
+        [x]="69.14083"
+        [y]="54.86222"
+        [srid]="'EPSG:4326'"
+      ></aol-coordinate>
+    </aol-view>
+    <aol-layer-tile>
+      <aol-source-osm></aol-source-osm>
+    </aol-layer-tile>
+
+    <aol-interaction-default></aol-interaction-default>
+    <!-- <aol-control-scaleline></aol-control-scaleline> -->
+    <!-- <aol-control-zoomslider></aol-control-zoomslider> -->
+    <aol-control-zoom></aol-control-zoom>
+
+    <aol-layer-vector>
+      <aol-source-vector>
+        <aol-feature>
+          <aol-geometry-point>
+            <aol-coordinate [x]="69.14083" [y]="54.86222" [srid]="'EPSG:4326'">
+            </aol-coordinate>
+          </aol-geometry-point>
+          <aol-style>
+            <aol-style-icon
+              [anchor]="[0.5, 1]"
+              [src]="'./svg/personal.svg'"
+            ></aol-style-icon>
+          </aol-style>
+        </aol-feature>
+        <!-- <aol-overlay #popup *ngIf="popupContent.shown"> 
+                   <aol-coordinate [x]="popupContent.gpsLongitude" [y]="popupContent.gpsLatitude" [srid]="'EPSG:4326'">      
+                   </aol-coordinate>
+                   <aol-content>
+                        <div><p>hi</p></div>
+                   </aol-content>
+            </aol-overlay> -->
+      </aol-source-vector>
+    </aol-layer-vector>
+  </aol-map>
+</div>
