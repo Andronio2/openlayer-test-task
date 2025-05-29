@@ -1,3 +1,26 @@
-<pre>
-  app-tools
-</pre>
+<div class="tools">
+  <button pButton class="btn" (click)="mes.toggle($event)">
+    <img src="./svg/mail.svg" alt="" />
+  </button>
+  <button pButton class="btn" (click)="devices.toggle($event)">
+    <img src="./svg/wifi.svg" alt="" />
+  </button>
+  <button pButton class="btn"><img src="./svg/notify.svg" alt="" /></button>
+</div>
+
+<p-popover #mes [styleClass]="'popover-message'">
+  <div>Сообщения 1</div>
+  <div class="message">
+    <div>img</div>
+    <div>Текст сообщения</div>
+    <div>дата</div>
+  </div>
+</p-popover>
+
+<p-popover #devices [styleClass]="'popover-devices'">
+  <div>Неразмещенные устройства</div>
+  <div>C219-00001</div>
+  <div>C219-00001</div>
+  <div>C219-00001</div>
+  <div>C219-00001</div>
+</p-popover>

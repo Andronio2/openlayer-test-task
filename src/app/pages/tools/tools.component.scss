@@ -1,0 +1,28 @@
+:host {
+  background: transparent;
+
+  .btn {
+    background: transparent;
+    border: none;
+  }
+}
+
+::ng-deep {
+  .popover-message,
+  .popover-devices {
+    width: 300px;
+    height: 50%;
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+  }
+
+  .popover-message .message {
+    background-color: #eee;
+    padding: 5px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+  }
+}
