@@ -1,9 +1,75 @@
-<div class="top">
-  <div class="logo"><img src="./svg/logo.svg" alt="" /></div>
-  <button pButton><img src="./svg/technique.svg" alt="" /></button>
-  <button pButton><img src="./svg/employee.svg" alt="" /></button>
+<div class="body">
+  <div class="top">
+    <div class="logo"><img src="./svg/logo.svg" alt="" /></div>
+    <button pButton (click)="toggleTechnique()">
+      <img src="./svg/technique.svg" alt="" />
+    </button>
+    <button pButton (click)="toggleEmployee()">
+      <img src="./svg/employee.svg" alt="" />
+    </button>
+  </div>
+  <div class="bottom">
+    <button pButton><img src="./svg/settings.svg" alt="" /></button>
+    <button pButton><img src="./svg/logout.svg" alt="" /></button>
+  </div>
 </div>
-<div class="bottom">
-  <button pButton><img src="./svg/settings.svg" alt="" /></button>
-  <button pButton><img src="./svg/logout.svg" alt="" /></button>
-</div>
+
+<p-overlay
+  [(visible)]="isShowEmployee"
+  styleClass="overlay-outer"
+  [appendTo]="'body'"
+>
+  <div>Персонал {{ employeeList.length }}</div>
+  <p-table
+    [value]="employeeList"
+    [tableStyle]="{ 'min-width': '30rem' }"
+    [tableStyleClass]="'table'"
+  >
+    <ng-template #header>
+      <tr>
+        <th>Таб №</th>
+        <th>ФИО</th>
+        <th>Выборка</th>
+        <th>Время</th>
+      </tr>
+    </ng-template>
+    <ng-template #body let-employee>
+      <tr>
+        <td>{{ employee.id }}</td>
+        <td>{{ employee.name }}</td>
+        <td>A1-1234</td>
+        <td>{{ time | date : "HH:mm:ss" }}</td>
+      </tr>
+    </ng-template>
+  </p-table>
+</p-overlay>
+
+<p-overlay
+  [(visible)]="isShowTechnique"
+  styleClass="overlay-outer"
+  [appendTo]="'body'"
+>
+  <div>Техника ({{ employeeList.length }})</div>
+  <p-table
+    [value]="techniqueList"
+    [tableStyle]="{ 'min-width': '30rem' }"
+    [tableStyleClass]="'table'"
+  >
+    <ng-template #header>
+      <tr>
+        <th>Таб №</th>
+        <th>Наименование</th>
+        <th>Выборка</th>
+        <th>Время</th>
+      </tr>
+    </ng-template>
+    <ng-template #body let-technique>
+      <tr>
+        <td>{{ technique.id }}</td>
+        <td>{{ technique.name }}</td>
+        <td>A1-1234</td>
+        <td>{{ time | date : "HH:mm:ss" }}</td>
+      </tr>
+    </ng-template>
+  </p-table>
+</p-overlay>

@@ -1,0 +1,16 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  gap: 2px;
+  padding: 10px;
+  background-color: #fff;
+}
+
+.sep {
+  display: flex;
+  justify-content: space-between;
+}
+span {
+  font-size: 12px;
+}

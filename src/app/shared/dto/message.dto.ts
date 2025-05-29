@@ -4,4 +4,5 @@ import { TechniqueDto } from './technique.dto';
 export interface MessageDto {
   employee: EmployeeDto[];
   technique: TechniqueDto[];
+  time: string;
 }

@@ -1,7 +1,7 @@
 import { Provider } from '@angular/core';
 // import { Observable, of } from 'rxjs';
 
-import { interval, map } from 'rxjs';
+import { delay, interval, map, of } from 'rxjs';
 import { MessageDto } from '../../dto/message.dto';
 import { WebSocketService } from './web-socket.service';
 // import { ExampleReturnType } from './example-return-type.model';
@@ -25,6 +25,7 @@ function generateMessage(): MessageDto {
       { id: 3, lon: x + rnd(), lat: y + rnd(), name: 'Technique 1' },
       { id: 4, lon: x + rnd(), lat: y + rnd(), name: 'Technique 2' },
     ],
+    time: new Date().toISOString(),
   };
 }
 

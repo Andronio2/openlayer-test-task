@@ -16,9 +16,9 @@
 
     <aol-layer-vector>
       <aol-source-vector #layer>
-        @if(messages$ | async; as message){ @for(employee of message.employee;
-        track employee.id){
-        <aol-feature>
+        @if(messages$ | async; as mesId){ @for(employee of
+        mesId.message.employee; track employee.id){
+        <aol-feature [id]="employee.id">
           <aol-geometry-point>
             <aol-coordinate
               [x]="employee.lon"
@@ -31,11 +31,12 @@
             <aol-style-icon
               [anchor]="[0.5, 1]"
               [src]="'./svg/personal.svg'"
+              [scale]="mesId.id === employee.id ? 1.5 : 1"
             ></aol-style-icon>
           </aol-style>
         </aol-feature>
-        } @for(technique of message.technique;track technique.id){
-        <aol-feature>
+        } @for(technique of mesId.message.technique;track technique.id){
+        <aol-feature [id]="technique.id">
           <aol-geometry-point>
             <aol-coordinate
               [x]="technique.lon"
@@ -48,23 +49,11 @@
             <aol-style-icon
               [anchor]="[0.5, 1]"
               [src]="'./svg/tech.svg'"
+              [scale]="mesId.id === technique.id ? 1.5 : 1"
             ></aol-style-icon>
           </aol-style>
         </aol-feature>
-
         } }
-        <!-- <aol-feature>
-          <aol-geometry-point>
-            <aol-coordinate [x]="69.14083" [y]="54.86222" [srid]="'EPSG:4326'">
-            </aol-coordinate>
-          </aol-geometry-point>
-          <aol-style>
-            <aol-style-icon
-              [anchor]="[0.5, 1]"
-              [src]="'./svg/personal.svg'"
-            ></aol-style-icon>
-          </aol-style>
-        </aol-feature> -->
       </aol-source-vector>
     </aol-layer-vector>
   </aol-map>

@@ -28,6 +28,7 @@ export class AppMapper {
     return {
       employee: messageDto.employee.map(AppMapper.mapEmployeeDtoToEmployee),
       technique: messageDto.technique.map(AppMapper.mapTechniqueDtoToTechnique),
+      time: new Date(messageDto.time),
     };
   }
 }
