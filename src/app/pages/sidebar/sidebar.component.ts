@@ -8,6 +8,7 @@ import { TableModule } from 'primeng/table';
 import { Employee } from '../../models/employee';
 import { Technique } from '../../models/technique';
 import { AppService } from '../../services/app.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-sidebar',
@@ -21,8 +22,11 @@ export class SidebarComponent implements OnInit {
   employeeList: Employee[] = [];
   techniqueList: Technique[] = [];
   time: Date = new Date();
+  selectedItem$: Observable<number>;
 
-  constructor(private appService: AppService, private destroy: DestroyRef) {}
+  constructor(private appService: AppService, private destroy: DestroyRef) {
+    this.selectedItem$ = this.appService.selectedFeatureId$;
+  }
 
   ngOnInit(): void {
     this.appService.messages$
@@ -40,5 +44,9 @@ export class SidebarComponent implements OnInit {
 
   toggleTechnique() {
     this.isShowTechnique = !this.isShowTechnique;
+  }
+
+  selectItem(id: number) {
+    this.appService.setSelectedFeatureId(id);
   }
 }
