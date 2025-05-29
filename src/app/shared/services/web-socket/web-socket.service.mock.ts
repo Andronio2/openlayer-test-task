@@ -30,7 +30,7 @@ function generateMessage(): MessageDto {
 }
 
 export const MOCK_WebSocketService = {
-  getMessages: () => interval(5000).pipe(map(() => generateMessage())),
+  getMessages: () => interval(2000).pipe(map(() => generateMessage())),
   closeConnection: () => null,
 };
 
